@@ -4,25 +4,25 @@ const jwt    = require('jsonwebtoken');
 const User   = require('../models/user');
 const secret = "omgfivemoredays";
 
-function create(req, res){
+function newUser(req, res){
 
   let userObject = new User(req.body);
 
   userObject.save((err, user) => {
-    if(err) res.status(401).send({message: err.errmsg});
+    if(err) res.status(401).send('user couldn\'t be saved: ' + err);
       res.status(200).send(user);
   });
 }
 
-function retrieve(req, res){
+function getUser(req, res){
   User.findOne({username: req.params.username}, (err, user) => {
-    if(err) res.status(401).send({message: err.errmsg});
+    if(err) res.status(401).send('user couldn\'t be found: ' + err);
     // returns entire user object
     res.status(200).send(user);
   });
 }
 
-function update(req, res){
+function updateUser(req, res){
   let userParams = req.body;
   // find by username
   let query = {username: req.params.username};
@@ -37,7 +37,7 @@ function update(req, res){
 
 }
 
-function destroy(req, res){
+function deleteUser(req, res){
   let userParams = req.body;
   // find by username
   let query = {username: userParams.username};
@@ -48,7 +48,7 @@ function destroy(req, res){
   })
 }
 
-function auth(req, res){
+function authUser(req, res){
 
   let userParams = req.body;
   // Validation for undefined email or password
@@ -71,9 +71,9 @@ function auth(req, res){
 }
 
 module.exports = {
-  create: create,
-  retrieve: retrieve,
-  update: update,
-  destroy: destroy,
-  auth: auth
+  newUser: newUser,
+  getUser: getUser,
+  updateUser: updateUser,
+  deleteUser: deleteUser,
+  authUser: authUser
 }
