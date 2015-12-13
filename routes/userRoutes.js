@@ -7,17 +7,17 @@ const expressJwt = require('express-jwt');
 const secret     = "omgfivemoredays";
 
 router.route('/user/auth')
-  .post(user.auth);
+  .post(user.authUser);
 
 router.route('/user/signup')
-  .post(user.create);
+  .post(user.newUser);
 
 router.route('/user')
   .all(expressJwt({
     secret: secret,
     userProperty: 'auth'
   }))
-  .delete(user.destroy);
+  .delete(user.deleteUser);
 
 router.route('/user/:username')
   .all(expressJwt({
@@ -25,8 +25,8 @@ router.route('/user/:username')
     userProperty: 'auth'
   }))
   // get single user
-  .get(user.retrieve)
+  .get(user.getUser)
   // user update
-  .put(user.update);
+  .put(user.updateUser);
 
 module.exports = router;
