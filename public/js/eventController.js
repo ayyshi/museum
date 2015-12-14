@@ -14,7 +14,7 @@ function EventController($http){
 
   function getEvents(){
     $http
-      .get('http://localhost:3000/events')
+      .get('http://localhost:3000/events/showAll')
       .then(function(res){
         res.data;
       });
