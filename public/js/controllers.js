@@ -10,6 +10,8 @@ EventController.$inject = ['$http'];
 function UserController($http){
   this.addUser = addUser;
   this.newUser = {};
+  this.loginUser = loginUser;
+  this.userlogin = {};
 
   function addUser(){
     $http
@@ -18,6 +20,14 @@ function UserController($http){
         console.log('user saved');
       });
       this.newUser = {};
+  };
+
+  function loginUser(){
+    $http
+      .post('http://localhost:3000/user/auth', this.userLogin)
+      .then(function(res){
+        localStorage.setItem('userToken', res.data.token);
+      });
   };
 };
 
