@@ -20,6 +20,7 @@ function UserController($http){
       .then(function(res){
         console.log('user saved');
       });
+      // reset newUser to empty
       this.newUser = {};
   };
 
@@ -27,11 +28,13 @@ function UserController($http){
     $http
       .post('http://localhost:3000/user/auth', this.userLogin)
       .then(function(res){
+        // save token to localStorage
         localStorage.setItem('userToken', res.data.token);
       });
   };
 
   function logoutUser(){
+    // remove token from localStorage
     localStorage.removeItem('userToken');
   };
 };
@@ -56,7 +59,7 @@ function EventController($http){
     this.newEvent.tags = this.newEvent.tags.split(', ');
 
     $http
-      .post('http://localhost:3000/events', this.newEvent)
+      .post('http://localhost:3000/events/new', this.newEvent)
       .then(function(res){
         getEvents();
       });
