@@ -7,7 +7,7 @@ const user       = require('../controllers/userController');
 const secret     = "omgfivemoredays";
 
 router.route('/auth')
-  .get(user.authUser);
+  .post(user.authUser);
 
 router.route('/signup')
   .post(user.newUser);
