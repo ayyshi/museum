@@ -15,7 +15,7 @@ function getAll(req, res){
 function newEvent(req, res){
   let eventObj = new Event(req.body);
 
-  bookObject.save((err, book) => {
+  eventObj.save((err, book) => {
     if(err) res.status(401).send('couldn\'t save new event ' + err);
     res.status(200).send(book);
   });

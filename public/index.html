@@ -2,12 +2,69 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Bookclub Chatroom</title>
+    <title>Museum Event Listing</title>
+    <link rel="stylesheet" href="/css/style.css" charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript" src="scripts/angular/angular.js"></script>
-    <link rel="stylesheet" href="/css/style.css" charset="utf-8">
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/eventController.js"></script>
   </head>
-  <body>
-
+  <body ng-app='museum-events'>
+    <section ng-controller='EventController as events'>
+      <form class="addEvent" ng-submit='events.addEvent()'>
+        <div>
+          <label for="eventTitle">Title</label>
+          <input type="text" id="eventTitle" placeholder="Event Title" ng-model='events.newEvent.title'>
+        </div>
+        <div>
+          <label for="eventDesc">Description</label>
+          <input type="text" id="eventDesc" placeholder="Description" ng-model='events.newEvent.description'>
+        </div>
+        <div>
+          <label for="eventType">Type</label>
+          <input type="text" id="eventType" placeholder="Type of Event" ng-model='events.newEvent.type'>
+        </div>
+        <div>
+          <label for="eventTitle">Category</label>
+          <select type="text" id="eventCategory" ng-model='events.newEvent.category'>
+            <option>Music</option>
+            <option>Art</option>
+            <option>Game</option>
+            <option>Education</option>
+          </select>
+        </div>
+        <div>
+          <label for="eventStart">Start Date</label>
+          <input type="date" id="eventStart" placeholder="Start Date" ng-model='events.newEvent.startDate'>
+        </div>
+        <div>
+          <label for="eventStartTime">Start Time</label>
+          <input type="time" id="eventStartTime" placeholder="Start Time" ng-model='events.newEvent.startTime'>
+        </div>
+        <div>
+          <label for="eventEnd">End Date</label>
+          <input type="date" id="eventEnd" placeholder="End Date" ng-model='events.newEvent.endDate'>
+        </div>
+        <div>
+          <label for="eventEndTime">End Time</label>
+          <input type="time" id="eventEndTime" placeholder="End Time" ng-model='events.newEvent.endTime'>
+        </div>
+        <div>
+          <label for="eventLocation">Location</label>
+          <input type="text" id="eventLocation" placeholder="Location" ng-model='events.newEvent.location'>
+        </div>
+        <div>
+          <label for="eventURL">URL</label>
+          <input type="text" id="eventURL" placeholder="URL for more info" ng-model='events.newEvent.eventUrl'>
+        </div>
+        <div>
+          <label for="eventTags">Tags</label>
+          <input type="text" id="eventTags" placeholder="Tags (seperate by commas)" ng-model='events.newEvent.tags'>
+        </div>
+        <div>
+          <input type="submit" value="add event">
+        </div>
+      </form>
+    </section>
   </body>
 </html>

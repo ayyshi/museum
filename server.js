@@ -14,6 +14,9 @@ app.set('port', process.env.PORT || 3000);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('/', express.static(__dirname + '/public'));
+app.use('/scripts', express.static(__dirname + '/node_modules'));
 app.use('/user', userRoutes);
 app.use('/events', eventRoutes);
 
