@@ -8,10 +8,11 @@ UserController.$inject = ['$http'];
 EventController.$inject = ['$http'];
 
 function UserController($http){
-  this.addUser = addUser;
-  this.newUser = {};
-  this.loginUser = loginUser;
-  this.userlogin = {};
+  this.addUser    = addUser;
+  this.newUser    = {};
+  this.loginUser  = loginUser;
+  this.userlogin  = {};
+  this.logoutUser = logoutUser;
 
   function addUser(){
     $http
@@ -29,12 +30,16 @@ function UserController($http){
         localStorage.setItem('userToken', res.data.token);
       });
   };
+
+  function logoutUser(){
+    localStorage.removeItem('userToken');
+  };
 };
 
 function EventController($http){
   this.getEvents = getEvents;
-  this.addEvent = addEvent;
-  this.newEvent = {};
+  this.addEvent  = addEvent;
+  this.newEvent  = {};
 
   getEvents();
 
