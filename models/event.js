@@ -6,6 +6,7 @@ let EventSchema = new mongoose.Schema({
   title:       { type: String, required: true },
   description: { type: String },
   type:        { type: String },
+  category:    { type: String },
   startDate:   { type: Date, required: true },
   endDate:     { type: Date },
   location:    { type: String, required: true },

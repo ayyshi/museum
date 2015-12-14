@@ -3,7 +3,6 @@
 const mongoose = require('mongoose');
 
 let TagSchema = new mongoose.Schema({
-  category: { type: String },
   topic:    { type: String, required: true }
 });
 
