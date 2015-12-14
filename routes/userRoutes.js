@@ -6,20 +6,20 @@ const expressJwt = require('express-jwt');
 const user       = require('../controllers/userController');
 const secret     = "omgfivemoredays";
 
-router.route('/user/auth')
-  .post(user.authUser);
+router.route('/auth')
+  .get(user.authUser);
 
-router.route('/user/signup')
+router.route('/signup')
   .post(user.newUser);
 
-router.route('/user')
+router.route('/')
   // .all(expressJwt({
   //   secret: secret,
   //   userProperty: 'auth'
   // }))
   .delete(user.deleteUser);
 
-router.route('/user/:username')
+router.route('/:username')
   // .all(expressJwt({
   //   secret: secret,
   //   userProperty: 'auth'
