@@ -8,12 +8,14 @@ const bodyParser  = require('body-parser');
 const mongoose    = require('mongoose');
 
 const userRoutes  = require('./routes/userRoutes');
+const eventRoutes = require('./routes/eventRoutes');
 
 app.set('port', process.env.PORT || 3000);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/', userRoutes);
+app.use('/user', userRoutes);
+app.use('/events', eventRoutes);
 
 app.use(express.static('public'));
 
