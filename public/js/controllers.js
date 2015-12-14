@@ -1,9 +1,25 @@
 'use strict';
 
 angular.module('museum-events', [])
+  .controller('UserController', UserController);
   .controller('EventController', EventController);
 
+UserController.$inject = ['$http'];
 EventController.$inject = ['$http'];
+
+function UserController($http){
+  this.addUser = addUser;
+  this.newUser = {};
+
+  function addUser(){
+    $http
+      .post('http://localhost:3000/user/auth', this.newUser)
+      .then(function(res){
+        console.log('user saved');
+      });
+      this.newUser = {};
+  };
+};
 
 function EventController($http){
   this.getEvents = getEvents;
