@@ -4,102 +4,20 @@
     <meta charset="utf-8">
     <title>Museum Event Listing</title>
     <link rel="stylesheet" href="/css/style.css" charset="utf-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script type="text/javascript" src="scripts/angular/angular.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
-    <script type="text/javascript" src="js/controllers.js"></script>
+    <script type="text/javascript" src="/js/script.js"></script>
+    <script type="text/javascript" src="/js/controllers.js"></script>
   </head>
   <body ng-app='museum-events'>
-    <section ng-controller='EventController as events'>
-      <form class="addEvent" ng-submit='events.addEvent()'>
-        <div>
-          <label for="eventTitle">Title</label>
-          <input type="text" id="eventTitle" placeholder="Event Title" ng-model='events.newEvent.title'></input>
-        </div>
-        <div>
-          <label for="eventDesc">Description</label>
-          <textarea id="eventDesc" placeholder="Description" ng-model='events.newEvent.description'></textarea>
-        </div>
-        <div>
-          <label for="eventType">Type</label>
-          <input type="text" id="eventType" placeholder="Type of Event" ng-model='events.newEvent.type'></input>
-        </div>
-        <div>
-          <label for="eventTitle">Category</label>
-          <select type="text" id="eventCategory" ng-model='events.newEvent.category'>
-            <option>Music</option>
-            <option>Art</option>
-            <option>Game</option>
-            <option>Education</option>
-          </select>
-        </div>
-        <div>
-          <label for="eventStart">Start Date</label>
-          <input type="date" id="eventStart" placeholder="Start Date" ng-model='events.newEvent.startDate'></input>
-        </div>
-        <div>
-          <label for="eventStartTime">Start Time</label>
-          <input type="time" id="eventStartTime" placeholder="Start Time" ng-model='events.newEvent.startTime'></input>
-        </div>
-        <div>
-          <label for="eventEnd">End Date</label>
-          <input type="date" id="eventEnd" placeholder="End Date" ng-model='events.newEvent.endDate'></input>
-        </div>
-        <div>
-          <label for="eventEndTime">End Time</label>
-          <input type="time" id="eventEndTime" placeholder="End Time" ng-model='events.newEvent.endTime'></input>
-        </div>
-        <div>
-          <label for="eventLocation">Location</label>
-          <input type="text" id="eventLocation" placeholder="Location" ng-model='events.newEvent.location'></input>
-        </div>
-        <div>
-          <label for="eventURL">URL</label>
-          <input type="text" id="eventURL" placeholder="URL for more info" ng-model='events.newEvent.eventUrl'></input>
-        </div>
-        <div>
-          <label for="eventTags">Tags</label>
-          <input type="text" id="eventTags" placeholder="Tags (seperate by commas)" ng-model='events.newEvent.tags'></input>
-        </div>
-        <div>
-          <input type="submit" value="add event">
-        </div>
-      </form>
-    </section>
-    <section ng-controller='UserController as users'>
-      <form class="addUser" ng-submit='users.addUser()'>
-        <div>
-          <label for="username">Username</label>
-          <input type="text" id="username" placeholder="Username" ng-model='users.newUser.username'></input>
-        </div>
-        <div>
-          <label for="password">Password</label>
-          <input type="password" id="password" placeholder="Password" ng-model='users.newUser.password'></input>
-        </div>
-        <div>
-          <label for="userBio">Bio</label>
-          <textarea id="userBio" placeholder="Bio" ng-model='users.newUser.bio'></textarea>
-        </div>
-        <div>
-          <input type="submit" value="add user"></input>
-        </div>
-      </form>
-      <form class="loginUser" ng-submit='users.loginUser()'>
-        <div>
-          <label for="username">Username</label>
-          <input type="text" id="username" placeholder="Username" ng-model='users.userLogin.username'></input>
-        </div>
-        <div>
-          <label for="password">Password</label>
-          <input type="password" id="password" placeholder="Password" ng-model='users.userLogin.password'></input>
-        </div>
-        <div>
-          <input type="submit" value="loginUser"></input>
-        </div>
-      </form>
-
-      <button type="button" ng-click='users.logoutUser()'>logout</button>
-    </section>
+    <h1>Events</h1>
+    <nav>
+      <a ui-sref='index'>All Events</a>
+      <a ui-sref='newEvent'>Add Event</a>
+    </nav>
+    <div ui-view>
+      <!-- <button type="button" ng-click='users.logoutUser()'>logout</button> -->
+    </div>
   </body>
 </html>

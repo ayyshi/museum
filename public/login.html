@@ -1,0 +1,15 @@
+<section ng-controller='UserController as users'>
+  <form class="loginUser" ng-submit='users.loginUser()'>
+    <div>
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Username" ng-model='users.userLogin.username'></input>
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Password" ng-model='users.userLogin.password'></input>
+    </div>
+    <div>
+      <input type="submit" value="loginUser"></input>
+    </div>
+  </form>
+</section>

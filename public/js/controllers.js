@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('museum-events', [])
+angular.module('museum-events')
   .controller('UserController', UserController)
   .controller('EventController', EventController);
 
@@ -9,8 +9,10 @@ EventController.$inject = ['$http'];
 
 function UserController($http){
   this.addUser    = addUser;
+  // holder for newuser params
   this.newUser    = {};
   this.loginUser  = loginUser;
+  // holder for login params
   this.userlogin  = {};
   this.logoutUser = logoutUser;
 
