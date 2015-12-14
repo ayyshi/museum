@@ -1,1 +1,1 @@
-angular.module("museum-events", []);
+angular.module('museum-events', []);
