@@ -1,0 +1,19 @@
+<section ng-controller='UserController as users'>
+  <form class="addUser" ng-submit='users.addUser()'>
+    <div>
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Username" ng-model='users.newUser.username'></input>
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Password" ng-model='users.newUser.password'></input>
+    </div>
+    <div>
+      <label for="userBio">Bio</label>
+      <textarea id="userBio" placeholder="Bio" ng-model='users.newUser.bio'></textarea>
+    </div>
+    <div>
+      <input type="submit" value="add user"></input>
+    </div>
+  </form>
+</section>

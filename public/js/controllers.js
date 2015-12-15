@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('museum-events', [])
+angular.module('museum-events')
   .controller('UserController', UserController)
   .controller('EventController', EventController);
 
@@ -8,23 +8,55 @@ UserController.$inject = ['$http'];
 EventController.$inject = ['$http'];
 
 function UserController($http){
-  this.addUser = addUser;
-  this.newUser = {};
+  let self        = this;
+  self.addUser    = addUser;
+  // holder for newuser params
+  self.newUser    = {};
+  self.loginUser  = loginUser;
+  // holder for login params
+  self.userlogin  = {};
+  self.logoutUser = logoutUser;
 
   function addUser(){
     $http
-      .post('http://localhost:3000/user/signup', this.newUser)
+      .post('http://localhost:3000/user/signup', self.newUser)
       .then(function(res){
         console.log('user saved');
       });
-      this.newUser = {};
+      // reset newUser to empty
+      self.newUser = {};
+  };
+
+  function loginUser(){
+    $http
+      .post('http://localhost:3000/user/auth', self.userLogin)
+      .then(function(res){
+        // save token to localStorage
+        localStorage.setItem('userToken', res.data.token);
+      });
+  };
+
+  function logoutUser(){
+    // remove token from localStorage
+    localStorage.removeItem('userToken');
+    redirect_to('/');
   };
 };
 
 function EventController($http){
-  this.getEvents = getEvents;
-  this.addEvent = addEvent;
-  this.newEvent = {};
+  // constructor(public authHttp:AuthHttp) {}
+  let self          = this;
+  self.all          = [];
+  self.getEvents    = getEvents;
+  self.addEvent     = addEvent;
+  // new event params
+  self.newEvent     = {};
+  self.updateEvent  = updateEvent;
+  self.searchEvent  = searchEvent;
+  self.term         = "";
+  // updated params
+  self.updatedEvent = {};
+  self.deleteEvent  = deleteEvent;
 
   getEvents();
 
@@ -32,19 +64,44 @@ function EventController($http){
     $http
       .get('http://localhost:3000/events/showAll')
       .then(function(res){
-        res.data;
+        self.all = res.data;
       });
   };
 
   function addEvent(){
-    // change tags from string into array of items
-    this.newEvent.tags = this.newEvent.tags.split(', ');
+    // change tags from string into array of items of lowercase words
+    self.newEvent.tags = self.newEvent.tags.split(', ').toLowerCase();
 
     $http
-      .post('http://localhost:3000/events', this.newEvent)
+      .post('http://localhost:3000/events/new', self.newEvent)
       .then(function(res){
         getEvents();
       });
-      this.newEvent = {};
+      self.newEvent = {};
+  };
+
+  function searchEvent(){
+    $http
+      .get('http://localhost:3000/events/search/' + self.term)
+      .then(function(res){
+        self.all = res.data;
+      });
+  };
+
+  function updateEvent(event){
+    $http
+      .put('http://localhost:3000/events/edit' + event._id, self.updatedEvent)
+      .then(function(res){
+        getEvents();
+      });
+      self.updatedEvent = {};
+  };
+
+  function deleteEvent(event){
+    $http
+      .delete('http://localhost:3000/events/edit' + event._id)
+      .then(function(res){
+        getEvents();
+      });
   };
 };
