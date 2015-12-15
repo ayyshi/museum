@@ -7,15 +7,23 @@ function EventRouter($stateProvider, $urlRouterProvider) {
 
   $stateProvider
   .state('index', {
-    url:'/',
+    url: '/',
     templateUrl: 'showAll.html'
   })
   .state('newEvent', {
-    url:'/newEvent',
+    url: '/event/new',
     templateUrl: 'newEvent.html'
   })
+  .state('editEvent', {
+    url: '/event/edit/:id',
+    templateUrl: 'editEvent.html'
+  })
+  .state('signup', {
+    url: '/user/signup',
+    templateUrl: 'signup.html'
+  })
   .state('login', {
-    url: '/login',
+    url: '/user/auth',
     templateUrl: 'login.html'
   })
 };
