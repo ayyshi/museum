@@ -4,10 +4,10 @@ angular.module('museum-events')
   .controller('UserController', UserController)
   .controller('EventController', EventController);
 
-UserController.$inject = ['$http'];
-EventController.$inject = ['$http'];
+UserController.$inject = ['$http', '$state'];
+EventController.$inject = ['$http', '$state'];
 
-function UserController($http){
+function UserController($http, $state){
   let self        = this;
   self.addUser    = addUser;
   // holder for newuser params
@@ -33,17 +33,18 @@ function UserController($http){
       .then(function(res){
         // save token to localStorage
         localStorage.setItem('userToken', res.data.token);
+        $state.go('index');
       });
   };
 
   function logoutUser(){
     // remove token from localStorage
     localStorage.removeItem('userToken');
-    redirect_to('/');
+    $state.go('login');
   };
 };
 
-function EventController($http){
+function EventController($http, $state){
   // constructor(public authHttp:AuthHttp) {}
   let self          = this;
   self.all          = [];
@@ -54,6 +55,7 @@ function EventController($http){
   self.updateEvent  = updateEvent;
   self.searchEvent  = searchEvent;
   self.term         = "";
+  self.results      = [];
   // updated params
   self.updatedEvent = {};
   self.deleteEvent  = deleteEvent;
@@ -70,12 +72,13 @@ function EventController($http){
 
   function addEvent(){
     // change tags from string into array of items of lowercase words
-    self.newEvent.tags = self.newEvent.tags.split(', ').toLowerCase();
+    self.newEvent.tags = self.newEvent.tags.toLowerCase().split(', ');
 
     $http
       .post('http://localhost:3000/events/new', self.newEvent)
       .then(function(res){
         getEvents();
+        $state.go('/');
       });
       self.newEvent = {};
   };
@@ -84,7 +87,7 @@ function EventController($http){
     $http
       .get('http://localhost:3000/events/search/' + self.term)
       .then(function(res){
-        self.all = res.data;
+        self.results = res.data;
       });
   };
 

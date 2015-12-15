@@ -97,7 +97,7 @@
       <tr>
         <td colspan="2">
           <!-- disable button when title or tag fields are empty -->
-          <input type="Submit" ng-disabled="events.newEvent.tags.length == null || events.newEvent.title.length == null || events.newEvent.startDate == null || events.newEvent.location == null" value="Add Event"></input>
+          <button type="submit" ng-disabled="events.newEvent.tags.length == null || events.newEvent.title.length == null || events.newEvent.startDate == null || events.newEvent.location == null" value="add event">Submit</button>
         </td>
       </tr>
     </table>

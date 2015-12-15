@@ -1,6 +1,11 @@
 <section ng-controller='EventController as events'>
+  <form class="search">
+    <input type="text" name="search" placeholder="Search by Tag" ng-model="events.term"></input>
+    <input type="submit" value="Search" ng-click="events.searchEvent()"></input>
+  </form>
   <ul class="showAll">
-    <li ng-repeat="event in events.all">
+    <h1>{{events.results.msg}}</h1>
+    <li ng-repeat="event in events.results.events">
       <h2>{{event.title}}</h2>
       <table>
         <tr>

@@ -15,10 +15,10 @@ router.route('/signup')
   .post(user.newUser);
 
 router.route('/:id')
-  // .all(expressJwt({
-  //   secret: secret,
-  //   userProperty: 'auth'
-  // }))
+  .all(expressJwt({
+    secret: secret,
+    userProperty: 'auth'
+  }))
   // get single user
   .get(user.getUser)
   // user update
