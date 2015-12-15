@@ -6,21 +6,20 @@ const server      = require('http').createServer(app);
 const request     = require('request');
 const bodyParser  = require('body-parser');
 const mongoose    = require('mongoose');
+const cors        = require('cors');
+const path        = require('path');
 
 const userRoutes  = require('./routes/userRoutes');
 const eventRoutes = require('./routes/eventRoutes');
 
 app.set('port', process.env.PORT || 3000);
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/', express.static(__dirname + '/public'));
-app.use('/scripts', express.static(__dirname + '/node_modules'));
 app.use('/user', userRoutes);
 app.use('/events', eventRoutes);
-
-app.use(express.static('public'));
 
 let mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost/museum-events';
 

@@ -42,9 +42,17 @@ function UserController($http){
 };
 
 function EventController($http){
-  this.getEvents = getEvents;
-  this.addEvent  = addEvent;
-  this.newEvent  = {};
+  // constructor(public authHttp:AuthHttp) {}
+  let self = this;
+  self.all          = [];
+  self.getEvents    = getEvents;
+  self.addEvent     = addEvent;
+  // new event params
+  self.newEvent     = {};
+  self.updateEvent  = updateEvent;
+  // updated params
+  self.updatedEvent = {};
+  self.deleteEvent  = deleteEvent;
 
   getEvents();
 
@@ -52,19 +60,36 @@ function EventController($http){
     $http
       .get('http://localhost:3000/events/showAll')
       .then(function(res){
-        res.data;
+        self.all = res.data;
       });
   };
 
   function addEvent(){
     // change tags from string into array of items
-    this.newEvent.tags = this.newEvent.tags.split(', ');
+    self.newEvent.tags = self.newEvent.tags.split(', ');
 
     $http
-      .post('http://localhost:3000/events/new', this.newEvent)
+      .post('http://localhost:3000/events/new', self.newEvent)
       .then(function(res){
         getEvents();
       });
-      this.newEvent = {};
+      self.newEvent = {};
+  };
+
+  function updateEvent(event){
+    $http
+      .put('http://localhost:3000/events/edit' + event._id, self.updatedEvent)
+      .then(function(res){
+        getEvents();
+      });
+      self.updatedEvent = {};
+  };
+
+  function deleteEvent(event){
+    $http
+      .delete('http://localhost:3000/events/edit' + event._id)
+      .then(function(res){
+        getEvents();
+      });
   };
 };

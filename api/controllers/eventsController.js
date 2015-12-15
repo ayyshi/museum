@@ -7,7 +7,8 @@ const Event      = require('../models/event');
 // show all events
 function getAll(req, res){
   Event.find((err, events) => {
-    res.send(events);
+    // returns events in decending order of startDate
+    res.send(events.sort({startDate: -1}));
   });
 };
 

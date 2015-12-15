@@ -1,5 +1,17 @@
 <section ng-controller='EventController as events'>
   <ul class="showAll">
-  {{events}}
-  </div>
+    <li ng-repeat="event in events.all">
+      <h2>{{event.title}}</h2>
+      <p>description: {{event.description}}<br>
+      type: {{event.type}}<br>
+      category: {{event.category}}<br>
+      {{event.startDate}}<br>
+      {{event.startTime}}<br>
+      {{event.endDate}}<br>
+      {{event.endTime}}<br>
+      {{event.location}}<br>
+      {{event.eventUrl}}<br>
+      <a ng-repeat='tag in event.tags'>{{tag}}</a>
+    </li>
+  </ul>
 </section>

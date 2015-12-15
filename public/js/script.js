@@ -14,4 +14,8 @@ function EventRouter($stateProvider, $urlRouterProvider) {
     url:'/newEvent',
     templateUrl: 'newEvent.html'
   })
+  .state('login', {
+    url: '/login',
+    templateUrl: 'login.html'
+  })
 };
