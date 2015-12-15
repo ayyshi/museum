@@ -4,13 +4,37 @@ body {
   margin: 0;
   font-family: 'Arvo', serif;
   text-align: center;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffc3b2+0,ffffff+100 */
+  background-color: #ffc3b2; /* Old browsers */
+  background-color: -moz-linear-gradient(top, #ffc3b2 0%, #ffffff 100%); /* FF3.6-15 */
+  background-color: -webkit-linear-gradient(top, #ffc3b2 0%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
+  background-color: linear-gradient(to bottom, #ffc3b2 0%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc3b2', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */s
 }
 
 header {
   margin: 0 auto;
   text-align: right;
-  background-color: #FF6E57;
+  background-color: #FFC3B2;
   padding: 20px;
+}
+
+nav {
+  margin-bottom: 20px;
+}
+
+nav a.active {
+  border: 2px solid black;
+}
+
+div.views {
+  text-align: center;
+  width: 60%;
+  min-height: 500px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 50px;
 }
 
 h2 {
@@ -18,24 +42,35 @@ h2 {
 }
 
 a {
+  color: #000000;
+  padding: 10px;
+}
+
+a.tags {
   padding-right: 10px;
 }
 
-a:last-child {
+a.tags:last-child {
   padding-right: 0px;
 }
 
 ul {
   padding: 0;
   list-style: none;
+  text-align: center;
 }
 
 li {
-  display: inline-table;
   margin: 10px;
   padding: 10px;
   border: 2px solid black;
   border-radius: 20px;
+}
+
+table {
+  text-align: justify;
+  position: relative;
+  margin: 0 auto;
 }
 
 th {
