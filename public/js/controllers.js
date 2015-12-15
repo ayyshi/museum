@@ -54,6 +54,7 @@ function EventController($http){
   self.updateEvent  = updateEvent;
   self.searchEvent  = searchEvent;
   self.term         = "";
+  self.results      = [];
   // updated params
   self.updatedEvent = {};
   self.deleteEvent  = deleteEvent;
@@ -84,7 +85,7 @@ function EventController($http){
     $http
       .get('http://localhost:3000/events/search/' + self.term)
       .then(function(res){
-        self.all = res.data;
+        self.results = res.data;
       });
   };
 
