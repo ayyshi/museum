@@ -11,12 +11,16 @@ function EventRouter($stateProvider, $urlRouterProvider) {
     templateUrl: 'showAll.html'
   })
   .state('newEvent', {
-    url: '/event/new',
+    url: '/events/new',
     templateUrl: 'newEvent.html'
   })
   .state('editEvent', {
-    url: '/event/edit/:id',
+    url: '/events/edit/:id',
     templateUrl: 'editEvent.html'
+  })
+  .state('search', {
+    url: '/events/search/:term',
+    templateUrl: 'search.html'
   })
   .state('signup', {
     url: '/user/signup',
