@@ -2,16 +2,42 @@
   <ul class="showAll">
     <li ng-repeat="event in events.all">
       <h2>{{event.title}}</h2>
-      <p>description: {{event.description}}<br>
-      type: {{event.type}}<br>
-      category: {{event.category}}<br>
-      {{event.startDate}}<br>
-      {{event.startTime}}<br>
-      {{event.endDate}}<br>
-      {{event.endTime}}<br>
-      {{event.location}}<br>
-      {{event.eventUrl}}<br>
-      <a ng-repeat='tag in event.tags'>{{tag}}</a>
+      <table>
+        <tr>
+          <th>Description:</th>
+          <td>{{event.description}}</td>
+        </tr>
+        <tr>
+          <th>Type:</th>
+          <td>{{event.type}}</td>
+        </tr>
+        <tr>
+          <th>Category:</th>
+          <td>{{event.category}}</td>
+        </tr>
+        <tr>
+          <th>Dates:</th>
+          <td>{{event.displayStart}} - {{event.displayEnd}}</td>
+        </tr>
+        <tr>
+          <th>Time:</th>
+          <td>{{event.startTime}} - {{event.endTime}}</td>
+        </tr>
+        <tr>
+          <th>Location:</th>
+          <td>{{event.location}}</td>
+        </tr>
+        <tr>
+          <th>Url:</th>
+          <td><a href="{{event.eventUrl}}">{{event.eventUrl}}</a></td>
+        </tr>
+        <tr>
+          <td colspan="2"><a href="#" ng-repeat='tag in event.tags'>{{tag}}</a></td>
+        </tr>
+        <tr>
+          <td colspan="2"><a  ui-sref='editEvent'>Edit</a><button type="button" class="delete" ng-click="events.deleteEvent(event)">Delete</button></td>
+        </tr>
+      </table>
     </li>
   </ul>
 </section>
