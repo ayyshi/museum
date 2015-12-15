@@ -5,7 +5,7 @@ angular.module('museum-events')
   .controller('EventController', EventController);
 
 UserController.$inject = ['$http', '$state'];
-EventController.$inject = ['$http'];
+EventController.$inject = ['$http', '$state'];
 
 function UserController($http, $state){
   let self        = this;
@@ -44,7 +44,7 @@ function UserController($http, $state){
   };
 };
 
-function EventController($http){
+function EventController($http, $state){
   // constructor(public authHttp:AuthHttp) {}
   let self          = this;
   self.all          = [];
@@ -78,6 +78,7 @@ function EventController($http){
       .post('http://localhost:3000/events/new', self.newEvent)
       .then(function(res){
         getEvents();
+        $state.go('/');
       });
       self.newEvent = {};
   };
