@@ -64,7 +64,7 @@ function searchEvent(req, res){
   Event.where({'tags': term}).exec(function(err, events){
     console.log(events);
     if(err) res.status(401).send('couldn\'t match event ' + err)
-    // if search is comes up empty send message
+    // send amount of results and results
     res.send({msg: events.length + ' EVENTS FOUND', events: events});
   });
 };
