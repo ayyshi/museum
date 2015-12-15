@@ -11,13 +11,15 @@
     <script type="text/javascript" src="/js/controllers.js"></script>
   </head>
   <body ng-app='museum-events'>
+    <header>
+      <a ui-sref='login'>Login</a> | <a ui-sref='signup'>Signup</a>
+    </header>
     <h1>Events</h1>
     <nav>
       <a ui-sref='index'>All Events</a>
       <a ui-sref='newEvent'>Add Event</a>
-      <a ui-sref='login'>Login</a>
     </nav>
-    <div ui-view>
+    <div class="views" ui-view>
       <!-- <button type="button" ng-click='users.logoutUser()'>logout</button> -->
     </div>
   </body>
