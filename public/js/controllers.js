@@ -39,6 +39,7 @@ function UserController($http){
   function logoutUser(){
     // remove token from localStorage
     localStorage.removeItem('userToken');
+    redirect_to('/');
   };
 };
 
@@ -51,6 +52,8 @@ function EventController($http){
   // new event params
   self.newEvent     = {};
   self.updateEvent  = updateEvent;
+  self.searchEvent  = searchEvent;
+  self.term         = "";
   // updated params
   self.updatedEvent = {};
   self.deleteEvent  = deleteEvent;
@@ -66,8 +69,8 @@ function EventController($http){
   };
 
   function addEvent(){
-    // change tags from string into array of items
-    self.newEvent.tags = self.newEvent.tags.split(', ');
+    // change tags from string into array of items of lowercase words
+    self.newEvent.tags = self.newEvent.tags.split(', ').toLowerCase();
 
     $http
       .post('http://localhost:3000/events/new', self.newEvent)
@@ -75,6 +78,14 @@ function EventController($http){
         getEvents();
       });
       self.newEvent = {};
+  };
+
+  function searchEvent(){
+    $http
+      .get('http://localhost:3000/events/search/' + self.term)
+      .then(function(res){
+        self.all = res.data;
+      });
   };
 
   function updateEvent(event){

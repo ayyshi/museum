@@ -56,6 +56,19 @@ function getEvent(req, res){
   });
 };
 
+// search for event
+function searchEvent(req, res){
+  // change search term to lower case
+  let term = req.params.term.toLowerCase();
+
+  Event.where({'tags': term}).exec(function(err, events){
+    console.log(events);
+    if(err) res.status(401).send('couldn\'t match event ' + err)
+    // if search is comes up empty send message
+    res.send({msg: events.length + ' EVENTS FOUND', events: events});
+  });
+};
+
 // PUT event
 function updateEvent(req, res){
   let id = req.params.id;
@@ -87,6 +100,7 @@ module.exports = {
   getAll: getAll,
   newEvent: newEvent,
   getEvent: getEvent,
+  searchEvent: searchEvent,
   updateEvent: updateEvent,
   deleteEvent: deleteEvent
 };

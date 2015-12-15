@@ -16,9 +16,13 @@
     </header>
     <h1>Events</h1>
     <nav>
-      <a ui-sref='index'>All Events</a>
-      <a ui-sref='newEvent'>Add Event</a>
+      <a ui-sref='index' ui-sref-active="active">All Events</a>
+      <a ui-sref='newEvent' ui-sref-active="active">Add Event</a>
     </nav>
+    <form class="search" ng-controller="EventController as events">
+      <input type="text" name="search" placeholder="search term" ng-model="events.term"></input>
+      <input type="submit" ng-click="events.searchEvent()">
+    </form>
     <div class="views" ui-view>
       <!-- <button type="button" ng-click='users.logoutUser()'>logout</button> -->
     </div>
