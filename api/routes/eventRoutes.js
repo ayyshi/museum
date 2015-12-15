@@ -21,6 +21,9 @@ router.route('/new')
   // }))
   .post(events.newEvent);
 
+router.route('/search/:term')
+  .get(events.searchEvent);
+
 router.route('/edit/:id')
   // .all(expressJwt({
   //   secret: secret,
