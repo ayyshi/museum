@@ -8,27 +8,28 @@ UserController.$inject = ['$http'];
 EventController.$inject = ['$http'];
 
 function UserController($http){
-  this.addUser    = addUser;
+  let self        = this;
+  self.addUser    = addUser;
   // holder for newuser params
-  this.newUser    = {};
-  this.loginUser  = loginUser;
+  self.newUser    = {};
+  self.loginUser  = loginUser;
   // holder for login params
-  this.userlogin  = {};
-  this.logoutUser = logoutUser;
+  self.userlogin  = {};
+  self.logoutUser = logoutUser;
 
   function addUser(){
     $http
-      .post('http://localhost:3000/user/signup', this.newUser)
+      .post('http://localhost:3000/user/signup', self.newUser)
       .then(function(res){
         console.log('user saved');
       });
       // reset newUser to empty
-      this.newUser = {};
+      self.newUser = {};
   };
 
   function loginUser(){
     $http
-      .post('http://localhost:3000/user/auth', this.userLogin)
+      .post('http://localhost:3000/user/auth', self.userLogin)
       .then(function(res){
         // save token to localStorage
         localStorage.setItem('userToken', res.data.token);
@@ -43,7 +44,7 @@ function UserController($http){
 
 function EventController($http){
   // constructor(public authHttp:AuthHttp) {}
-  let self = this;
+  let self          = this;
   self.all          = [];
   self.getEvents    = getEvents;
   self.addEvent     = addEvent;
