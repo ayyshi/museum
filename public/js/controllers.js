@@ -101,7 +101,6 @@ function EventController($http, $state){
       .get('http://localhost:3000/events/show/' + params.eventid)
       .then(function(res){
         self.editEvent = res.data;
-        console.log(self.editEvent);
         $state.go('editEvent');
       })
   };
