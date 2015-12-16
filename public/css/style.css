@@ -2,6 +2,7 @@
 
 body {
   margin: 0;
+  margin-bottom: 50px;
   font-family: 'Arvo', serif;
   text-align: center;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffc3b2+0,ffffff+100 */
@@ -41,6 +42,10 @@ h2 {
   margin-top: 0;
 }
 
+h2.showEvent {
+  text-decoration: underline;
+}
+
 a {
   color: #000000;
   padding: 10px;
@@ -57,7 +62,6 @@ a.tags:last-child {
 ul {
   padding: 0;
   list-style: none;
-  text-align: center;
 }
 
 li {
@@ -68,17 +72,23 @@ li {
 }
 
 table {
-  text-align: justify;
+  text-align: left;
   position: relative;
   margin: 0 auto;
+  width: 90%;
 }
 
 th {
   padding-right: 10px;
+  width: 100px;
 }
 
 td {
   padding-right: 10px;
+}
+
+td[colspan="2"] {
+  text-align: center;
 }
 
 input {
@@ -94,4 +104,8 @@ textarea {
 select {
   width: 200px;
   font-family: 'Arvo', serif;
+}
+
+form table {
+  width: auto;
 }
