@@ -5,23 +5,24 @@
     <title>Museum Event Listing</title>
     <link rel="stylesheet" href="/css/style.css" charset="utf-8">
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
     <script type="text/javascript" src="/js/script.js"></script>
     <script type="text/javascript" src="/js/controllers.js"></script>
   </head>
   <body ng-app='museum-events'>
-    <header>
-      <a ui-sref='login'>Login</a> | <a ui-sref='signup'>Signup</a>
+    <header ng-controller="UserController as users">
+      <a ui-sref='login'>Login</a> | <a href="#" ng-click='users.logoutUser()'>Logout</a> | <a ui-sref='signup'>Signup</a>
     </header>
     <h1>Events</h1>
     <nav>
-      <a ui-sref='index' ui-sref-active="active">All Events</a>
+      <a ui-sref='events' ui-sref-active="active">All Events</a>
       <a ui-sref='newEvent' ui-sref-active="active">Add Event</a>
       <a ui-sref='search' ui-sref-active="active">Search</a>
     </nav>
-    <div class="views" ui-view>
-      <!-- <button type="button" ng-click='users.logoutUser()'>logout</button> -->
+    <div class="views">
+      <section ng-controller='EventController as events' ui-view>
+      </section>
     </div>
   </body>
 </html>
