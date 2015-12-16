@@ -1,3 +1,5 @@
+'use strict';
+
 angular
   .module('museum-events', ['ui.router'])
   .config(EventRouter)
@@ -7,58 +9,40 @@ angular
       	if ($window.localStorage.getItem('userToken')) {
       		config.headers.Authorization =
       		  'Bearer ' + $window.localStorage.getItem('userToken');
-      	}
+      	} else {
+        }
         return config;
       },
       response: function (response) {
         if (response.status === 401) {
-          // handle the case where the user is not authenticated
         }
         return response || $q.when(response);
       }
     };
   })
-
   .config(function ($httpProvider) {
     $httpProvider.interceptors.push('authInterceptor');
   })
-  // .factory('User', function() {
-  //   return {
-  //     loginUser : false
-  //   };
-  // })
-  // .controller('UserController',['$scope', 'User', function($scope, User) {
-  //   $scope.user = User;
-  // }])
-  // .run(['$rootScope', '$state', 'User', function($rootScope, $state, User) {
-  //   $rootScope.$on('$stateChangeStart',
-  //   function(event, toState, toParams, fromState, fromParams) {
-  //
-  //     let isAuthenticationRequired =  toState.data
-  //           && toState.data.requiresLogin
-  //           && !User.isLoggedIn;
-  //
-  //     if(isAuthenticationRequired) {
-  //       event.preventDefault();
-  //       $state.go('login');
-  //     };
-  //   });
-  // }])
 
 function EventRouter($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-  .state('index', {
+  .state('events', {
     url: '/',
     templateUrl: 'showAll.html'
   })
   .state('newEvent', {
     url: '/events/new',
     templateUrl: 'newEvent.html',
+    // data: {requiresLogin: true}
+  })
+  .state('details', {
+    url: '/events/show/:eventid',
+    templateUrl: 'show.html'
   })
   .state('editEvent', {
-    url: '/events/edit/:id',
+    url:'/events/edit/:eventid',
     templateUrl: 'editEvent.html'
   })
   .state('search', {
