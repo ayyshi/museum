@@ -35,7 +35,6 @@ function EventRouter($stateProvider, $urlRouterProvider) {
   .state('newEvent', {
     url: '/events/new',
     templateUrl: 'newEvent.html',
-    // data: {requiresLogin: true}
   })
   .state('details', {
     url: '/events/show/:eventid',
@@ -56,5 +55,9 @@ function EventRouter($stateProvider, $urlRouterProvider) {
   .state('login', {
     url: '/user/auth',
     templateUrl: 'login.html'
+  })
+  .state('loginSuccess', {
+    url: '/loginSuccess',
+    templateUrl: 'success.html'
   })
 };

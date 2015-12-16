@@ -1,111 +1,31 @@
 @import url(https://fonts.googleapis.com/css?family=Arvo);
 
+/*#FFC3B2*/
+
 body {
   margin: 0;
-  margin-bottom: 50px;
+  padding-bottom: 50px;
   font-family: 'Arvo', serif;
-  text-align: center;
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffc3b2+0,ffffff+100 */
-  background-color: #ffc3b2; /* Old browsers */
-  background-color: -moz-linear-gradient(top, #ffc3b2 0%, #ffffff 100%); /* FF3.6-15 */
-  background-color: -webkit-linear-gradient(top, #ffc3b2 0%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
-  background-color: linear-gradient(to bottom, #ffc3b2 0%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc3b2', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */s
 }
 
 header {
-  margin: 0 auto;
-  text-align: right;
-  background-color: #FFC3B2;
-  padding: 20px;
+  width: 100%;
+  background-color: red;
+  position: fixed;
 }
 
-nav {
-  margin-bottom: 20px;
+header .logo {
+  float: left;
 }
 
-nav a.active {
-  border: 2px solid black;
+header .userlog {
+  float: right;
 }
 
-div.views {
-  text-align: center;
-  width: 60%;
-  min-height: 500px;
-  margin: 0 auto;
-  background-color: white;
-  padding: 20px;
-  border-radius: 50px;
-}
-
-h2 {
-  margin-top: 0;
-}
-
-h2.showEvent {
-  text-decoration: underline;
-}
-
-a {
-  color: #000000;
-  padding: 10px;
-}
-
-a.tags {
-  padding-right: 10px;
-}
-
-a.tags:last-child {
-  padding-right: 0px;
-}
-
-ul {
-  padding: 0;
-  list-style: none;
-}
-
-li {
-  margin: 10px;
-  padding: 10px;
-  border: 2px solid black;
-  border-radius: 20px;
-}
-
-table {
-  text-align: left;
-  position: relative;
-  margin: 0 auto;
-  width: 90%;
-}
-
-th {
-  padding-right: 10px;
-  width: 100px;
-}
-
-td {
-  padding-right: 10px;
+div.container {
+  padding-top: 100px;
 }
 
 td[colspan="2"] {
   text-align: center;
-}
-
-input {
-  width: 200px;
-  font-family: 'Arvo', serif;
-}
-
-textarea {
-  width: 200px;
-  font-family: 'Arvo', serif;
-}
-
-select {
-  width: 200px;
-  font-family: 'Arvo', serif;
-}
-
-form table {
-  width: auto;
 }

@@ -11,17 +11,23 @@
     <script type="text/javascript" src="/js/controllers.js"></script>
   </head>
   <body ng-app='museum-events'>
-    <header ng-controller="UserController as users">
-      <a ui-sref='login'>Login</a> | <a href="#" ng-click='users.logoutUser()'>Logout</a> | <a ui-sref='signup'>Signup</a>
+    <header>
+      <div class="logo">
+        <h1>Museum Events</h1>
+      </div>
+      <div class="userlog">
+        <a ui-sref='login'>Login</a> | <a href="#" ng-click='users.logoutUser()' ng-hide="window.localStorage.userToken">Logout</a> | <a ui-sref='signup'>Signup</a>
+      </div>
     </header>
-    <h1>Museum Events</h1>
-    <nav>
-      <a ui-sref='events' ui-sref-active="active">All Events</a>
-      <a ui-sref='newEvent' ui-sref-active="active">Add Event</a>
-      <a ui-sref='search' ui-sref-active="active">Search</a>
-    </nav>
-    <div class="views">
-      <section ng-controller='EventController as events' ui-view>
+    <div class="container">
+      <section>
+        <nav>
+          <a ui-sref='events' ui-sref-active="active">All Events</a>
+          <a ui-sref='newEvent' ui-sref-active="active">Add Event</a>
+          <a ui-sref='search' ui-sref-active="active">Search</a>
+        </nav>
+        <div class="eventViews" ng-controller='EventController as events' ui-view>
+        </div>
       </section>
     </div>
   </body>

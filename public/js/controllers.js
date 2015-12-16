@@ -15,6 +15,8 @@ function UserController($http, $state, $stateParams){
   self.loginUser  = loginUser;
   // holder for login params
   self.userlogin  = {};
+  self.getUser    = getUser;
+  self.oneUser    = [];
   self.logoutUser = logoutUser;
 
   function addUser(){
@@ -33,7 +35,16 @@ function UserController($http, $state, $stateParams){
       .then(function(res){
         // save token to localStorage
         localStorage.setItem('userToken', res.data.token);
-        $state.go('/');
+        $state.go('loginSuccess');
+      });
+  };
+
+  function getUser(params){
+    $http
+      .get('http://localhost:3000/user/show/' + params.username)
+      .then(function(res){
+        self.oneUser = res.data;
+        $state.go('profile');
       });
   };
 
