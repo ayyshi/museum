@@ -7,7 +7,7 @@ angular.module('museum-events')
 UserController.$inject = ['$http', '$state'];
 EventController.$inject = ['$http', '$state'];
 
-function UserController($http, $state){
+function UserController($http, $state, $stateParams){
   let self        = this;
   self.addUser    = addUser;
   // holder for newuser params
@@ -33,7 +33,7 @@ function UserController($http, $state){
       .then(function(res){
         // save token to localStorage
         localStorage.setItem('userToken', res.data.token);
-        $state.go('index');
+        $state.go('/');
       });
   };
 
@@ -47,17 +47,21 @@ function UserController($http, $state){
 function EventController($http, $state){
   // constructor(public authHttp:AuthHttp) {}
   let self          = this;
-  self.all          = [];
   self.getEvents    = getEvents;
+  self.all          = [];
   self.addEvent     = addEvent;
-  // new event params
   self.newEvent     = {};
+  self.getOne       = getOne;
+  self.showEvent    = [];
+  self.getOneEdit   = getOneEdit;
+  self.editEvent    = [];
+  // new event params
   self.updateEvent  = updateEvent;
+  self.updatedEvent = {};
   self.searchEvent  = searchEvent;
   self.term         = "";
   self.results      = [];
   // updated params
-  self.updatedEvent = {};
   self.deleteEvent  = deleteEvent;
 
   getEvents();
@@ -83,6 +87,25 @@ function EventController($http, $state){
       self.newEvent = {};
   };
 
+  function getOne(params){
+    $http
+      .get('http://localhost:3000/events/show/' + params.eventid)
+      .then(function(res){
+        self.showEvent = res.data;
+        $state.go('details');
+      })
+  };
+
+  function getOneEdit(params){
+    $http
+      .get('http://localhost:3000/events/show/' + params.eventid)
+      .then(function(res){
+        self.editEvent = res.data;
+        console.log(self.editEvent);
+        $state.go('editEvent');
+      })
+  };
+
   function searchEvent(){
     $http
       .get('http://localhost:3000/events/search/' + self.term)
@@ -91,11 +114,15 @@ function EventController($http, $state){
       });
   };
 
-  function updateEvent(event){
+  function updateEvent(params){
+
+    self.updatedEvent.tags = self.updatedEvent.tags.toLowerCase().split(', ');
+
     $http
-      .put('http://localhost:3000/events/edit' + event._id, self.updatedEvent)
+      .put('http://localhost:3000/events/edit/' + params.eventid, self.updatedEvent)
       .then(function(res){
         getEvents();
+        $state.go('/');
       });
       self.updatedEvent = {};
   };
