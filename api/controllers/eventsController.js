@@ -50,7 +50,7 @@ function newEvent(req, res){
 function getEvent(req, res){
   let id = req.params.id;
 
-  Event.findById({_id: id}, function(err, event){
+  Event.find({_id: id}, function(err, event){
     if(err) res.status(401).send('couldn\'t find event: ' + err);
     res.send(event);
   });
