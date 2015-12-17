@@ -15,7 +15,7 @@
       <div class="logo">
         <h1 ui-sref='events'>Event.ly</h1>
       </div>
-      <ul class="userlog">
+      <ul class="userlog" ng-controller='UserController as users'>
         <li ui-sref='signup' ui-sref-active="active">Signup</li>
         <li ui-sref='login' ui-sref-active="active">Login</li>
         <li ng-click='users.logoutUser()'>Logout</li>
