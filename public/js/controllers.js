@@ -26,7 +26,7 @@ function UserController($http, $state, $stateParams){
 
   function addUser(){
     $http
-      .post('http://localhost:3000/user/signup', self.newUser)
+      .post('https://damp-ridge-8698.herokuapp.com/user/signup', self.newUser)
       .then(function(res){
         console.log('user saved');
       });
@@ -36,7 +36,7 @@ function UserController($http, $state, $stateParams){
 
   function loginUser(){
     $http
-      .post('http://localhost:3000/user/auth', self.userLogin)
+      .post('https://damp-ridge-8698.herokuapp.com/user/auth', self.userLogin)
       .then(function(res){
         // save token to localStorage
         localStorage.setItem('userToken', res.data.token);
@@ -46,7 +46,7 @@ function UserController($http, $state, $stateParams){
 
   function getUser(params){
     $http
-      .get('http://localhost:3000/user/show/' + params.username)
+      .get('https://damp-ridge-8698.herokuapp.com/user/show/' + params.username)
       .then(function(res){
         self.oneUser = res.data;
       });
@@ -54,7 +54,7 @@ function UserController($http, $state, $stateParams){
 
   function getOneEdit(params){
     $http
-      .get('http://localhost:3000/user/show/' + params.username)
+      .get('https://damp-ridge-8698.herokuapp.com/user/show/' + params.username)
       .then(function(res){
         self.userEdit = res.data;
         $state.go('editUser');
@@ -63,7 +63,7 @@ function UserController($http, $state, $stateParams){
 
   function updateUser(params){
     $http
-      .put('http://localhost:3000/user/' + params.eventid, self.updatedUser)
+      .put('https://damp-ridge-8698.herokuapp.com/user/' + params.eventid, self.updatedUser)
       .then(function(res){
         $state.go('/');
       });
@@ -78,7 +78,7 @@ function UserController($http, $state, $stateParams){
 
   function deleteUser(user){
     $http
-      .delete('http://localhost:3000/user/' + user._id)
+      .delete('https://damp-ridge-8698.herokuapp.com/user/' + user._id)
       .then(function(res){
         $state.go('/');
       });
@@ -109,7 +109,7 @@ function EventController($http, $state){
 
   function getEvents(){
     $http
-      .get('http://localhost:3000/events/showAll')
+      .get('https://damp-ridge-8698.herokuapp.com/events/showAll')
       .then(function(res){
         self.all = res.data;
       });
@@ -120,7 +120,7 @@ function EventController($http, $state){
     self.newEvent.tags = self.newEvent.tags.toLowerCase().split(', ');
 
     $http
-      .post('http://localhost:3000/events/new', self.newEvent)
+      .post('https://damp-ridge-8698.herokuapp.com/events/new', self.newEvent)
       .then(function(res){
         getEvents();
         $state.go('/');
@@ -130,7 +130,7 @@ function EventController($http, $state){
 
   function getOne(params){
     $http
-      .get('http://localhost:3000/events/show/' + params.eventid)
+      .get('https://damp-ridge-8698.herokuapp.com/events/show/' + params.eventid)
       .then(function(res){
         self.showEvent = res.data;
         $state.go('details');
@@ -139,7 +139,7 @@ function EventController($http, $state){
 
   function getOneEdit(params){
     $http
-      .get('http://localhost:3000/events/show/' + params.eventid)
+      .get('https://damp-ridge-8698.herokuapp.com/events/show/' + params.eventid)
       .then(function(res){
         self.editEvent = res.data;
         $state.go('editEvent');
@@ -148,7 +148,7 @@ function EventController($http, $state){
 
   function searchEvent(){
     $http
-      .get('http://localhost:3000/events/search/' + self.term)
+      .get('https://damp-ridge-8698.herokuapp.com/events/search/' + self.term)
       .then(function(res){
         self.results = res.data;
       });
@@ -159,7 +159,7 @@ function EventController($http, $state){
     self.updatedEvent.tags = self.updatedEvent.tags.toLowerCase().split(', ');
 
     $http
-      .put('http://localhost:3000/events/edit/' + params.eventid, self.updatedEvent)
+      .put('https://damp-ridge-8698.herokuapp.com/events/edit/' + params.eventid, self.updatedEvent)
       .then(function(res){
         getEvents();
         $state.go('/');
@@ -169,7 +169,7 @@ function EventController($http, $state){
 
   function deleteEvent(event){
     $http
-      .delete('http://localhost:3000/events/edit' + event._id)
+      .delete('https://damp-ridge-8698.herokuapp.com/events/edit' + event._id)
       .then(function(res){
         getEvents();
       });

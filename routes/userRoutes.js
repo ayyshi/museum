@@ -6,7 +6,7 @@ const expressJwt     = require('express-jwt');
 const methodOverride = require('method-override');
 
 const user       = require('../controllers/userController');
-const secret     = "omgfivemoredays";
+const secret     = process.env.SECRET;
 
 router.route('/auth')
   .post(user.authUser);

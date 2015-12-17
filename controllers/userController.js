@@ -2,7 +2,7 @@
 
 const jwt    = require('jsonwebtoken');
 const User   = require('../models/user');
-const secret = "omgfivemoredays";
+const secret = process.env.SECRET;
 
 function newUser(req, res){
 
