@@ -29,6 +29,7 @@ function UserController($http, $state, $stateParams){
       .post('https://damp-ridge-8698.herokuapp.com/user/signup', self.newUser)
       .then(function(res){
         console.log('user saved');
+        $state.go('/');
       });
       // reset newUser to empty
       self.newUser = {};
