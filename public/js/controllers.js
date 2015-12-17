@@ -123,7 +123,6 @@ function EventController($http, $state){
     $http
       .post('https://damp-ridge-8698.herokuapp.com/events/new', self.newEvent)
       .then(function(res){
-        getEvents();
         $state.go('/');
       });
       self.newEvent = {};
