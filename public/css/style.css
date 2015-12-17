@@ -13,6 +13,9 @@ header {
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: #245F7F;
+  -webkit-box-shadow: 0px 10px 20px 0px #368EBF;
+  -moz-box-shadow: 0px 10px 20px 0px #368EBF;
+  box-shadow: 0px 10px 20px 0px #368EBF;
 }
 
 header .logo {
@@ -38,6 +41,10 @@ h1 {
 h2 {
   color: #245F7F;
   text-shadow: 2px 2px 4px #368EBF;
+}
+
+.showAll h2:hover {
+  text-decoration: underline;
 }
 
 ul {

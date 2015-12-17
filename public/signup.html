@@ -1,36 +1,42 @@
-<section ng-controller='UserController as users'>
-  <h2>SIGNUP</h2>
-  <form class="loginUser" ng-submit='users.addUser()'>
-    <table>
-      <tr>
-        <td>
-          Username
-        </td>
-        <td>
-          <input type="text" id="username" placeholder="Username" ng-model='users.newUser.username'></input>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Password
-        </td>
-        <td>
-          <input type="password" id="password" placeholder="Password" ng-model='users.newUser.password'></input>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Bio
-        </td>
-        <td>
-          <textarea name="bio" id="bio" placeholder="Bio" ng-model='users.newUser.bio'></textarea>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2">
-          <input type="submit" value="Signup"></input>
-        </td>
-      </tr>
-    </table>
-  </form>
-</section>
+<h2>SIGNUP</h2>
+<form class="loginUser" ng-submit='users.addUser()'>
+  <table>
+    <tr>
+      <td>
+        Username
+      </td>
+      <td>
+        <input type="text" id="username" placeholder="Username" ng-model='users.newUser.username'></input>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Password
+      </td>
+      <td>
+        <input type="password" id="password" placeholder="Password" ng-model='users.newUser.password'></input>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Bio
+      </td>
+      <td>
+        <textarea name="bio" id="bio" placeholder="Bio" ng-model='users.newUser.bio'></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Interests
+      </td>
+      <td>
+        <textarea name="interests" id="interests" placeholder="Interests" ng-model='users.newUser.interests'></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <input type="submit" value="Signup" ng-disabled="users.newUser.username.length < 4 || users.newUser.password.length < 6"></input>
+      </td>
+    </tr>
+  </table>
+</form>

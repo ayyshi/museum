@@ -1,0 +1,38 @@
+<div>
+  <h2>EDIT USER</h2>
+  <form class="updateUser" ng-submit='users.updateUser()'>
+    <table>
+      <tr>
+        <td>
+          <label for="username">Username</label>
+        </td>
+        <td>
+          <input type="text" id="username" placeholder="{{users.userEdit.username}}" ng-model='users.updatedUser.username'></input>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="password">Type</label>
+        </td>
+        <td>
+          <input type="password" id="password" placeholder="new password" ng-model='users.updatedUser.password'></input>
+        </td>
+      </tr>
+      <tr>
+      <tr>
+        <td>
+          <label for="bio">Bio</label>
+        </td>
+        <td>
+          <textarea id="bio" placeholder="{{users.userEdit.bio}}" ng-model='users.updatedUser.bio'></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <!-- disable button when title or tag fields are empty -->
+          <input type="Submit" ng-disabled="users.updatedUser.username == null" value="Edit User"></input>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
