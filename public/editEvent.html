@@ -1,12 +1,13 @@
-<section ng-controller='EventController as events'>
-  <form class="addEvent" ng-submit='events.addEvent()'>
+<div ng-repeat="event in events.editEvent">
+  <h2>EDIT EVENT</h2>
+  <form class="addEvent" ng-submit='events.updateEvent()'>
     <table>
       <tr>
         <td>
           <label for="eventTitle">Title</label>
         </td>
         <td>
-          <input type="text" id="eventTitle" placeholder="Event Title" ng-model='events.newEvent.title'></input>
+          <input type="text" id="eventTitle" placeholder="{{event.title}}" ng-model='events.updatedEvent.title'></input>
         </td>
       </tr>
       <tr>
@@ -14,7 +15,7 @@
           <label for="eventDesc">Description</label>
         </td>
         <td>
-          <textarea id="eventDesc" placeholder="Description" ng-model='events.newEvent.description'></textarea>
+          <textarea id="eventDesc" placeholder="{{event.description}}" ng-model='events.updatedEvent.description'></textarea>
         </td>
       </tr>
       <tr>
@@ -22,7 +23,7 @@
           <label for="eventType">Type</label>
         </td>
         <td>
-          <input type="text" id="eventType" placeholder="Type of Event" ng-model='events.newEvent.type'></input>
+          <input type="text" id="eventType" placeholder="{{event.type}}" ng-model='events.updatedEvent.type'></input>
         </td>
       </tr>
       <tr>
@@ -30,7 +31,7 @@
           <label for="eventTitle">Category</label>
         </td>
         <td>
-          <select type="text" id="eventCategory" ng-model='events.newEvent.category'>
+          <select type="text" id="eventCategory" ng-model='events.updatedEvent.category'>
             <option>Music</option>
             <option>Art</option>
             <option>Game</option>
@@ -43,7 +44,7 @@
           <label for="eventStart">Start Date</label>
         </td>
         <td>
-          <input type="date" id="eventStart" placeholder="Start Date" ng-model='events.newEvent.startDate'></input>
+          <input type="date" id="eventStart" ng-model='events.updatedEvent.startDate'></input>
         </td>
       </tr>
       <tr>
@@ -51,7 +52,7 @@
           <label for="eventStartTime">Start Time</label>
         </td>
         <td>
-          <input type="time" id="eventStartTime" placeholder="Start Time" ng-model='events.newEvent.startTime'></input>
+          <input type="time" id="eventStartTime" ng-model='events.updatedEvent.startTime'></input>
         </td>
       </tr>
       <tr>
@@ -59,7 +60,7 @@
           <label for="eventEnd">End Date</label>
         </td>
         <td>
-          <input type="date" id="eventEnd" placeholder="End Date" ng-model='events.newEvent.endDate'></input>
+          <input type="date" id="eventEnd" ng-model='events.updatedEvent.endDate'></input>
         </td>
       </tr>
       <tr>
@@ -67,7 +68,7 @@
           <label for="eventEndTime">End Time</label>
         </td>
         <td>
-          <input type="time" id="eventEndTime" placeholder="End Time" ng-model='events.newEvent.endTime'></input>
+          <input type="time" id="eventEndTime" ng-model='events.updatedEvent.endTime'></input>
         </td>
       </tr>
       <tr>
@@ -75,7 +76,7 @@
           <label for="eventLocation">Location</label>
         </td>
         <td>
-          <input type="text" id="eventLocation" placeholder="Location" ng-model='events.newEvent.location'></input>
+          <input type="text" id="eventLocation" placeholder="{{event.location}}" ng-model='events.updatedEvent.location'></input>
         </td>
       </tr>
       <tr>
@@ -83,7 +84,7 @@
           <label for="eventURL">URL</label>
         </td>
         <td>
-          <input type="text" id="eventURL" placeholder="URL for more info" ng-model='events.newEvent.eventUrl'></input>
+          <input type="text" id="eventURL" placeholder="{{event.eventUrl}}" ng-model='events.updatedEvent.eventUrl'></input>
         </td>
       </tr>
       <tr>
@@ -91,15 +92,15 @@
           <label for="eventTags">Tags</label>
         </td>
         <td>
-          <input type="text" id="eventTags" placeholder="Tags (seperate by commas)" ng-model='events.newEvent.tags'></input>
+          <input type="text" id="eventTags" placeholder="{{event.tags}}" ng-model='events.updatedEvent.tags'></input>
         </td>
       </tr>
       <tr>
         <td colspan="2">
           <!-- disable button when title or tag fields are empty -->
-          <button type="submit" ng-disabled="events.newEvent.tags.length == null || events.newEvent.title.length == null || events.newEvent.startDate == null || events.newEvent.location == null" value="add event">Submit</button>
+          <input type="Submit" ng-disabled="events.updatedEvent.tags.length == null || events.updatedEvent.title.length == null || events.updatedEvent.startDate == null || events.updatedEvent.location == null" value="edit event"></input>
         </td>
       </tr>
     </table>
   </form>
-</section>
+</div>

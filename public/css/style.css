@@ -2,96 +2,131 @@
 
 body {
   margin: 0;
+  padding-bottom: 50px;
   font-family: 'Arvo', serif;
-  text-align: center;
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffc3b2+0,ffffff+100 */
-  background-color: #ffc3b2; /* Old browsers */
-  background-color: -moz-linear-gradient(top, #ffc3b2 0%, #ffffff 100%); /* FF3.6-15 */
-  background-color: -webkit-linear-gradient(top, #ffc3b2 0%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
-  background-color: linear-gradient(to bottom, #ffc3b2 0%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc3b2', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */s
+  background-image: url('../images/background.png');
 }
 
 header {
-  margin: 0 auto;
-  text-align: right;
-  background-color: #FFC3B2;
+  width: 100%;
+  position: fixed;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #245F7F;
+}
+
+header .logo {
+  float: left;
+  padding-left: 10px;
+}
+
+header .userlog {
+  font-size: 20px;
+  float: right;
   padding: 20px;
+  color: #FFFFFF;
+  text-shadow: 2px 2px 4px #368EBF;
 }
 
-nav {
-  margin-bottom: 20px;
-}
-
-nav a.active {
-  border: 2px solid black;
-}
-
-div.views {
-  text-align: center;
-  width: 60%;
-  min-height: 500px;
-  margin: 0 auto;
-  background-color: white;
-  padding: 20px;
-  border-radius: 50px;
+h1 {
+  font-size: 50px;
+  margin: 0;
+  color: #FFFFFF;
+  text-shadow: 2px 2px 4px #368EBF;
 }
 
 h2 {
-  margin-top: 0;
-}
-
-a {
-  color: #000000;
-  padding: 10px;
-}
-
-a.tags {
-  padding-right: 10px;
-}
-
-a.tags:last-child {
-  padding-right: 0px;
+  color: #245F7F;
+  text-shadow: 2px 2px 4px #368EBF;
 }
 
 ul {
-  padding: 0;
   list-style: none;
-  text-align: center;
+  padding: 0;
+  margin: 0;
 }
 
 li {
+  display: inline;
   margin: 10px;
-  padding: 10px;
-  border: 2px solid black;
-  border-radius: 20px;
+}
+
+ul.nav {
+  font-size: 30px;
+  color: #245F7F;
+}
+
+li.active {
+  -webkit-text-fill-color: #FFFFFF;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #245F7F;
+}
+
+.userlog li.active {
+  color: #245F7F;
+  -webkit-text-fill-color: #245F7F;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #FFFFFF;
+}
+
+div.container {
+  padding-top: 120px;
+  padding-bottom: 50px;
+  text-align: center;
+  width: 70%;
+  margin: 0 auto;
 }
 
 table {
   text-align: justify;
-  position: relative;
-  margin: 0 auto;
+  width: 100%;
 }
 
 th {
-  padding-right: 10px;
+  width: 150px;
 }
 
 td {
-  padding-right: 10px;
+  padding: 5px;
+}
+
+td[colspan="2"] {
+  text-align: center;
+}
+
+form table {
+  width: auto;
+  margin: 0 auto;
 }
 
 input {
   width: 200px;
   font-family: 'Arvo', serif;
+  border: 2px dotted #000000;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 textarea {
   width: 200px;
   font-family: 'Arvo', serif;
+  border: 2px dotted #000000;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 select {
   width: 200px;
   font-family: 'Arvo', serif;
+  border: 2px dotted #000000;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+footer {
+  text-align: center;
+}
+
+footer a {
+  color: #245F7F;
 }

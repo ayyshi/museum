@@ -1,9 +1,10 @@
 <section ng-controller='UserController as users'>
+  <h2>LOGIN</h2>
   <form class="loginUser" ng-submit='users.loginUser()'>
     <table>
       <tr>
         <td>
-          <label for="username">Username</label>
+          Username
         </td>
         <td>
           <input type="text" id="username" placeholder="Username" ng-model='users.userLogin.username'></input>
@@ -11,7 +12,7 @@
       </tr>
       <tr>
         <td>
-          <label for="password">Password</label>
+          Password
         </td>
         <td>
           <input type="password" id="password" placeholder="Password" ng-model='users.userLogin.password'></input>

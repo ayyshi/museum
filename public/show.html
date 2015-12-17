@@ -1,11 +1,5 @@
-<h2>SEARCH</h2>
-<form class="search">
-  <input type="text" name="search" placeholder="Search by Tag" ng-model="events.term"></input>
-  <input type="submit" value="Search" ng-click="events.searchEvent()"></input>
-</form>
-<ul class="showAll">
-  <h2>{{events.results.msg}}</h2>
-  <li ng-repeat="event in events.results.events">
+<ul class="eventSingle">
+  <li ng-repeat="event in events.showEvent">
     <h2>{{event.title}}</h2>
     <table>
       <tr>
@@ -38,10 +32,13 @@
       </tr>
       <tr>
         <td colspan="2">
-          <ul>
-            <li class="tags" ng-repeat='tag in event.tags'>{{tag}}</li>
+          <ul class="tags">
+            <li ng-repeat='tag in event.tags'>{{tag}}</li>
           </ul>
         </td>
+      </tr>
+      <tr>
+        <td colspan="2"><button ng-click="events.getOneEdit({eventid: event._id})">Edit</button><button class="delete" ng-click="events.deleteEvent(event)">Delete</button></td>
       </tr>
     </table>
   </li>

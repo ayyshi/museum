@@ -2,26 +2,40 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Museum Event Listing</title>
+    <title>Event.ly</title>
     <link rel="stylesheet" href="/css/style.css" charset="utf-8">
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
     <script type="text/javascript" src="/js/script.js"></script>
     <script type="text/javascript" src="/js/controllers.js"></script>
   </head>
   <body ng-app='museum-events'>
+    <a href="#"></a>
     <header>
-      <a ui-sref='login'>Login</a> | <a ui-sref='signup'>Signup</a>
+      <div class="logo">
+        <h1 ui-sref='events'>Event.ly</h1>
+      </div>
+      <ul class="userlog">
+        <li ui-sref='login' ui-sref-active="active">Login</li>
+        <li ng-click='users.logoutUser()'>Logout</li>
+        <li ui-sref='signup' ui-sref-active="active">Signup</li>
+      </ul>
     </header>
-    <h1>Events</h1>
-    <nav>
-      <a ui-sref='index' ui-sref-active="active">All Events</a>
-      <a ui-sref='newEvent' ui-sref-active="active">Add Event</a>
-      <a ui-sref='search' ui-sref-active="active">Search</a>
-    </nav>
-    <div class="views" ui-view>
-      <!-- <button type="button" ng-click='users.logoutUser()'>logout</button> -->
+    <div class="container">
+      <section>
+        <ul class="nav">
+          <li ui-sref='events' ui-sref-active="active">All Events</li>
+          <li ui-sref='newEvent' ui-sref-active="active">Add Event</li>
+          <li ui-sref='search' ui-sref-active="active">Search</li>
+        </ul>
+        <div class="eventViews" ng-controller='EventController as events' ui-view="events">
+        </div>
+        <div class="userViews" ng-controller='UserController as users' ui-view="users">
+        </div>
+      </section>
     </div>
+    <footer>
+      <a href="#">back to top</a>
+    </footer>
   </body>
 </html>

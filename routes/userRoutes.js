@@ -14,13 +14,15 @@ router.route('/auth')
 router.route('/signup')
   .post(user.newUser);
 
+router.route('/show/:username')
+  // get single user
+  .get(user.getUser);
+
 router.route('/:id')
   .all(expressJwt({
     secret: secret,
     userProperty: 'auth'
   }))
-  // get single user
-  .get(user.getUser)
   // user update
   .put(user.updateUser)
   // delete user

@@ -1,43 +1,42 @@
-<section ng-controller='EventController as events'>
-  <ul class="showAll">
-    <li ng-repeat="event in events.all">
-      <h2>{{event.title}}</h2>
-      <table>
-        <tr>
-          <th>Description:</th>
-          <td>{{event.description}}</td>
-        </tr>
-        <tr>
-          <th>Type:</th>
-          <td>{{event.type}}</td>
-        </tr>
-        <tr>
-          <th>Category:</th>
-          <td>{{event.category}}</td>
-        </tr>
-        <tr>
-          <th>Dates:</th>
-          <td>{{event.displayStart}} - {{event.displayEnd}}</td>
-        </tr>
-        <tr>
-          <th>Time:</th>
-          <td>{{event.startTime}} - {{event.endTime}}</td>
-        </tr>
-        <tr>
-          <th>Location:</th>
-          <td>{{event.location}}</td>
-        </tr>
-        <tr>
-          <th>Url:</th>
-          <td><a href="{{event.eventUrl}}">{{event.eventUrl}}</a></td>
-        </tr>
-        <tr>
-          <td colspan="2"><a class="tags" href="#" ng-repeat='tag in event.tags'>{{tag}}</a></td>
-        </tr>
-        <tr>
-          <td colspan="2"><a  ui-sref='editEvent'>Edit</a><button type="button" class="delete" ng-click="events.deleteEvent(event)">Delete</button></td>
-        </tr>
-      </table>
-    </li>
-  </ul>
-</section>
+<ul class="showAll">
+  <li ng-repeat="event in events.all">
+    <h2 class="showEvent" ng-click="events.getOne({eventid: event._id})">{{event.title}}</h2></a>
+    <table>
+      <tr>
+        <th>Description:</th>
+        <td>{{event.description}}</td>
+      </tr>
+      <tr>
+        <th>Type:</th>
+        <td>{{event.type}}</td>
+      </tr>
+      <tr>
+        <th>Category:</th>
+        <td>{{event.category}}</td>
+      </tr>
+      <tr>
+        <th>Dates:</th>
+        <td>{{event.displayStart}} - {{event.displayEnd}}</td>
+      </tr>
+      <tr>
+        <th>Time:</th>
+        <td>{{event.startTime}} - {{event.endTime}}</td>
+      </tr>
+      <tr>
+        <th>Location:</th>
+        <td>{{event.location}}</td>
+      </tr>
+      <tr>
+        <th>Url:</th>
+        <td><a href="{{event.eventUrl}}">{{event.eventUrl}}</a></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <ul class="tags">
+            <li ng-repeat='tag in event.tags'>{{tag}}</li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+  </li>
+</ul>

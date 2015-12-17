@@ -50,7 +50,7 @@ function newEvent(req, res){
 function getEvent(req, res){
   let id = req.params.id;
 
-  Event.findById({_id: id}, function(err, event){
+  Event.find({_id: id}, function(err, event){
     if(err) res.status(401).send('couldn\'t find event: ' + err);
     res.send(event);
   });
@@ -73,16 +73,32 @@ function searchEvent(req, res){
 function updateEvent(req, res){
   let id = req.params.id;
 
-  Event.findById({_id: id}, function(err, event){
-    if (err) res.status(401).send('couldn\'t find event '+ err);
+  let startDate = dateFormat(req.body.startDate, "mmm dd, yyyy");
+  let endDate = dateFormat(req.body.endDate, "mmm dd, yyyy");
+  // convert times from UTC
+  let startTime = dateFormat(req.body.startTime, "HH:MM");
+  let endTime = dateFormat(req.body.endTime, "HH:MM");
 
-    event.body = req.body;
+  let eventParams = {
+    title:        req.body.title,
+    description:  req.body.description,
+    type:         req.body.type,
+    category:     req.body.category,
+    startDate:    req.body.startDate,
+    displayStart: startDate,
+    startTime:    startTime,
+    endDate:      req.body.endDate,
+    displayEnd:   endDate,
+    endTime:      endTime,
+    location:     req.body.location,
+    eventUrl:     req.body.eventUrl,
+    tags:         req.body.tags
+  };
 
-    event.save(function(error){
-      if (err) res.send('couldn\'t update event ' + error);
-
-      res.send('event updated');
-    });
+  Event.findOneAndUpdate({_id: id}, eventParams, (err, event) => {
+    if (err) res.send('couldn\'t update event ' + error);
+    res.send('event updated');
+    $state.go('/');
   });
 };
 

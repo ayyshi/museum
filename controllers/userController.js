@@ -49,7 +49,7 @@ function deleteUser(req, res){
 }
 
 function authUser(req, res){
-  
+
   let userParams = req.body;
   // Validation for undefined email or password
   if (userParams.username == undefined || userParams.password == undefined)
