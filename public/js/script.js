@@ -25,11 +25,11 @@ angular
   })
 
 function EventRouter($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('');
+  $urlRouterProvider.otherwise('/');
 
   $stateProvider
   .state('events', {
-    url: '',
+    url: '/',
     views: {
       'events':{
         templateUrl: 'showAll.html'
@@ -37,7 +37,7 @@ function EventRouter($stateProvider, $urlRouterProvider) {
     }
   })
   .state('details', {
-    url: 'events/show/:eventid',
+    url: '/events/show/:eventid',
     views: {
       'events':{
         templateUrl: 'show.html'
@@ -45,7 +45,7 @@ function EventRouter($stateProvider, $urlRouterProvider) {
     }
   })
   .state('newEvent', {
-    url: 'events/new',
+    url: '/events/new',
     views: {
       'events':{
         templateUrl: 'newEvent.html',
@@ -53,7 +53,7 @@ function EventRouter($stateProvider, $urlRouterProvider) {
     }
   })
   .state('editEvent', {
-    url:'events/edit/:eventid',
+    url:'/events/edit/:eventid',
     views: {
       'events':{
         templateUrl: 'editEvent.html'
@@ -61,7 +61,7 @@ function EventRouter($stateProvider, $urlRouterProvider) {
     }
   })
   .state('search', {
-    url: 'events/search/:term',
+    url: '/events/search/:term',
     views: {
       'events':{
         templateUrl: 'search.html'
@@ -69,7 +69,7 @@ function EventRouter($stateProvider, $urlRouterProvider) {
     }
   })
   .state('signup', {
-    url: 'user/signup',
+    url: '/user/signup',
     views: {
       'users':{
         templateUrl: 'signup.html'
@@ -77,7 +77,7 @@ function EventRouter($stateProvider, $urlRouterProvider) {
     }
   })
   .state('login', {
-    url: 'user/auth',
+    url: '/user/auth',
     views: {
       'users':{
         templateUrl: 'login.html'
@@ -85,7 +85,7 @@ function EventRouter($stateProvider, $urlRouterProvider) {
     }
   })
   .state('profile', {
-    url: 'user/show/:username',
+    url: '/user/show/:username',
     views: {
       'users':{
         templateUrl: 'profile.html'
@@ -93,7 +93,7 @@ function EventRouter($stateProvider, $urlRouterProvider) {
     }
   })
   .state('editUser', {
-    url: 'user/:userid',
+    url: '/user/:userid',
     views: {
       'users':{
         templateUrl: 'editUser.html'
