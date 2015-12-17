@@ -1,0 +1,23 @@
+<ul class="eventSingle">
+  <li>
+    <h2>{{users.oneUser.username}}'s profile</h2>
+    <table>
+      <tr>
+        <th>Bio:</th>
+        <td>{{users.oneUser.bio}}</td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <ul>
+            <li>
+              <input type="button" value="Edit" ng-click="users.getOneEdit({username: users.oneUser.username})"></input>
+            <li>
+            <li>
+              <input type="button" value="Delete" ng-click="users.deleteUser(users.oneUser)"></input>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+  </li>
+</ul>

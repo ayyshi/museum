@@ -84,11 +84,19 @@ function EventRouter($stateProvider, $urlRouterProvider) {
       }
     }
   })
-  .state('loginSuccess', {
-    url: '/loginSuccess',
+  .state('profile', {
+    url: '/user/show/:username',
     views: {
       'users':{
-        templateUrl: 'success.html'
+        templateUrl: 'profile.html'
+      }
+    }
+  })
+  .state('editUser', {
+    url: '/user/:userid',
+    views: {
+      'users':{
+        templateUrl: 'editUser.html'
       }
     }
   });

@@ -38,7 +38,16 @@
         </td>
       </tr>
       <tr>
-        <td colspan="2"><button ng-click="events.getOneEdit({eventid: event._id})">Edit</button><button class="delete" ng-click="events.deleteEvent(event)">Delete</button></td>
+        <td colspan="2">
+          <ul>
+            <li>
+              <input type="button" value="Edit" ng-click="events.getOneEdit({eventid: event._id})"></input>
+            <li>
+            <li>
+              <input type="button" value="Delete" ng-click="events.deleteEvent(event)"></input>
+            </li>
+          </ul>
+        </td>
       </tr>
     </table>
   </li>

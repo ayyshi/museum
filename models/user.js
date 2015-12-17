@@ -6,9 +6,10 @@ const bcrypt = require('bcrypt');
 const EventSchema = require('./event.js').schema;
 
 let UserSchema = new mongoose.Schema({
-  username: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  bio:      { type: String }
+  username:  { type: String, required: true, unique: true },
+  password:  { type: String, required: true },
+  bio:       { type: String },
+  interests: { type: String }
 });
 
 UserSchema.pre('save', function(next) {

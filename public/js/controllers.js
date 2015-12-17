@@ -8,16 +8,21 @@ UserController.$inject = ['$http', '$state'];
 EventController.$inject = ['$http', '$state'];
 
 function UserController($http, $state, $stateParams){
-  let self        = this;
-  self.addUser    = addUser;
+  let self         = this;
+  self.addUser     = addUser;
   // holder for newuser params
-  self.newUser    = {};
-  self.loginUser  = loginUser;
+  self.newUser     = {};
+  self.loginUser   = loginUser;
   // holder for login params
-  self.userlogin  = {};
-  self.getUser    = getUser;
-  self.oneUser    = [];
-  self.logoutUser = logoutUser;
+  self.userlogin   = {};
+  self.getUser     = getUser;
+  self.oneUser     = [];
+  self.getOneEdit  = getOneEdit;
+  self.userEdit    = [];
+  self.updateUser  = updateUser;
+  self.updatedUser = {};
+  self.logoutUser  = logoutUser;
+  self.deleteUser  = deleteUser;
 
   function addUser(){
     $http
@@ -35,7 +40,7 @@ function UserController($http, $state, $stateParams){
       .then(function(res){
         // save token to localStorage
         localStorage.setItem('userToken', res.data.token);
-        $state.go('loginSuccess');
+        $state.go('profile');
       });
   };
 
@@ -44,14 +49,39 @@ function UserController($http, $state, $stateParams){
       .get('http://localhost:3000/user/show/' + params.username)
       .then(function(res){
         self.oneUser = res.data;
-        $state.go('profile');
       });
+  };
+
+  function getOneEdit(params){
+    $http
+      .get('http://localhost:3000/user/show/' + params.username)
+      .then(function(res){
+        self.userEdit = res.data;
+        $state.go('editUser');
+      })
+  };
+
+  function updateUser(params){
+    $http
+      .put('http://localhost:3000/user/' + params.eventid, self.updatedUser)
+      .then(function(res){
+        $state.go('/');
+      });
+      self.updatedUser = {};
   };
 
   function logoutUser(){
     // remove token from localStorage
     localStorage.removeItem('userToken');
     $state.go('login');
+  };
+
+  function deleteUser(user){
+    $http
+      .delete('http://localhost:3000/user/' + user._id)
+      .then(function(res){
+        $state.go('/');
+      });
   };
 };
 

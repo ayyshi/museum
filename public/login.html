@@ -1,28 +1,26 @@
-<section ng-controller='UserController as users'>
-  <h2>LOGIN</h2>
-  <form class="loginUser" ng-submit='users.loginUser()'>
-    <table>
-      <tr>
-        <td>
-          Username
-        </td>
-        <td>
-          <input type="text" id="username" placeholder="Username" ng-model='users.userLogin.username'></input>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Password
-        </td>
-        <td>
-          <input type="password" id="password" placeholder="Password" ng-model='users.userLogin.password'></input>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2">
-          <input type="submit" value="Login"></input>
-        </td>
-      </tr>
-    </table>
-  </form>
-</section>
+<h2>LOGIN</h2>
+<form class="loginUser" ng-submit='users.loginUser()'>
+  <table>
+    <tr>
+      <td>
+        Username
+      </td>
+      <td>
+        <input type="text" id="username" placeholder="Username" ng-model='users.userLogin.username'></input>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Password
+      </td>
+      <td>
+        <input type="password" id="password" placeholder="Password" ng-model='users.userLogin.password'></input>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <input type="submit" ng-click="users.getUser({username: users.userLogin.username})" value="Login"></input>
+      </td>
+    </tr>
+  </table>
+</form>
