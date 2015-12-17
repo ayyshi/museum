@@ -9,7 +9,7 @@ const Event      = require('../models/event');
 function getAll(req, res){
   Event.find((err, events) => {
     // returns events in decending order of startDate and startTime
-    res.send(events.sort({startDate: -1, startTime: -1}));
+    res.send(events.sort({startDate: -1}));
   });
 };
 
