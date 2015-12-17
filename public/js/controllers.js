@@ -7,7 +7,7 @@ angular.module('museum-events')
 UserController.$inject = ['$http', '$state'];
 EventController.$inject = ['$http', '$state'];
 
-function UserController($http, $state, $stateParams){
+function UserController($http, $state, $window){
   let self         = this;
   self.addUser     = addUser;
   // holder for newuser params
@@ -73,7 +73,7 @@ function UserController($http, $state, $stateParams){
 
   function logoutUser(){
     // remove token from localStorage
-    localStorage.removeItem('userToken');
+    $window.localStorage.removeItem('userToken');
     $state.go('login');
   };
 
