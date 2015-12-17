@@ -30,34 +30,66 @@ function EventRouter($stateProvider, $urlRouterProvider) {
   $stateProvider
   .state('events', {
     url: '/',
-    templateUrl: 'showAll.html'
-  })
-  .state('newEvent', {
-    url: '/events/new',
-    templateUrl: 'newEvent.html',
+    views: {
+      'events':{
+        templateUrl: 'showAll.html'
+      }
+    }
   })
   .state('details', {
     url: '/events/show/:eventid',
-    templateUrl: 'show.html'
+    views: {
+      'events':{
+        templateUrl: 'show.html'
+      }
+    }
+  })
+  .state('newEvent', {
+    url: '/events/new',
+    views: {
+      'events':{
+        templateUrl: 'newEvent.html',
+      }
+    }
   })
   .state('editEvent', {
     url:'/events/edit/:eventid',
-    templateUrl: 'editEvent.html'
+    views: {
+      'events':{
+        templateUrl: 'editEvent.html'
+      }
+    }
   })
   .state('search', {
     url: '/events/search/:term',
-    templateUrl: 'search.html'
+    views: {
+      'events':{
+        templateUrl: 'search.html'
+      }
+    }
   })
   .state('signup', {
     url: '/user/signup',
-    templateUrl: 'signup.html'
+    views: {
+      'users':{
+        templateUrl: 'signup.html'
+      }
+    }
   })
   .state('login', {
     url: '/user/auth',
-    templateUrl: 'login.html'
+    views: {
+      'users':{
+        templateUrl: 'login.html'
+      }
+    }
   })
   .state('loginSuccess', {
     url: '/loginSuccess',
-    templateUrl: 'success.html'
-  })
+    views: {
+      'users':{
+        templateUrl: 'success.html'
+      }
+    }
+  });
 };

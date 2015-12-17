@@ -31,7 +31,11 @@
         <td><a href="{{event.eventUrl}}">{{event.eventUrl}}</a></td>
       </tr>
       <tr>
-        <td colspan="2"><a class="tags" href="#" ng-repeat='tag in event.tags'>{{tag}}</a></td>
+        <td colspan="2">
+          <ul class="tags">
+            <li ng-repeat='tag in event.tags'>{{tag}}</li>
+          </ul>
+        </td>
       </tr>
       <tr>
         <td colspan="2"><button ng-click="events.getOneEdit({eventid: event._id})">Edit</button><button class="delete" ng-click="events.deleteEvent(event)">Delete</button></td>
