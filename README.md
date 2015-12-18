@@ -1,4 +1,4 @@
-## [Kollections](https://collections.herokuapp.com)<br>An Events Listing for the Arts
+## [Kollections](https://kollections.herokuapp.com)<br>An Events Listing for the Arts
 
 ### username: testuser, password: password
 
