@@ -1,17 +1,24 @@
-# Museum Events Listings
-## User Stories
-### All Users
-1. can view all events
-2. can view an individual event
-3. can create an account
+## [Kollections](https://collections.herokuapp.com)<br>An Events Listing for the Arts
 
-### Logged in Users
-1. can create a profile
-2. can edit their profiles
-3. can delete their account
-4. can create new events
-5. can edit events they created
-6. can delete events they created
+### username: testuser, password: password
 
+### User Stories
+1. All Users
+  - can view all events
+  - can view an individual event
+  - can create an account
+  - can search for events based on tags
+2. Logged in Users
+  - can create a profile
+  - can edit their profiles
+  - can delete their account
+  - can create new events
+  - can edit events they created
+  - can delete events they created
+
+### Future Features
+- fuzzy searching through all attributes
 
 ### Known Issues
+- logout shown even if not logged in
+- no errors thrown on route authentication fails
